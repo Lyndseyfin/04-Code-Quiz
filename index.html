@@ -10,6 +10,22 @@
 </head>
 
 <body>
+  <div id="info-box" class="info-box">
+    <span>Coding Quiz Challange</span>
+  </div>
+
+
+  <div class="info" id="info">
+    <span>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers
+      will penalize your scrore time by ten seconds!</span>
+  </div>
+
+  <div class="controls">
+    <button id="start-btn" class="start-btn btn">Start Quiz</button>
+    <button id="next-btn" class="next-btn btn hide">Next</button>
+  </div>
+
+
   <div class="container">
     <div id="question-container" class="hide">
       <div id="question">Question</div>
@@ -20,17 +36,19 @@
         <button class="btn">D</button>
       </div>
     </div>
+
   </div>
-  <div class="controls">
-    <button id="start-btn" class="start-btn btn">Start Quiz</button>
-    <button id="next-btn" class="next-btn btn hide">Next</button>
+
+  <div class="quiz-box">
+    <header>
+      <div class="timer"></div>
+      <div class="time-text">Time:</div>
+      <div class="timer-sec">60</div>
   </div>
-  <div class="timer">
-    <div id="countdownTimer">Timer</div>
-    <span id="timer"></span>
-  </div>
-  
+  </header>
+
   <script src="./assets/script.js"></script>
 
 </body>
+
 </html>
