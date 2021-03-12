@@ -4,26 +4,33 @@ var nextButton = document.getElementById('next-btn')
 var questionContainerElement = document.getElementById('question-container')
 var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
+var timeEl = document.querySelector(".timer");
+var infoBox = document.getElementById("info")
+var textCorrect = document.querySelector("#correctWrong");
 
-//var mintues = Math.floor(time / 1000 / 60);
-//console.log(minutes); 
-
+//let variables as they change
 let shuffledQuestions, currentQuestionIndex
+var secondsLeft = 60;
+var timerInterval;
 
 // allows buttons to work 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
+    textCorrect.classList.add('hide');
     SetNextQuestion() //incrementing to next question 
 })
- 
 
+ 
 function startGame() {
     console.log('Started')
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5) //sorting questions
     currentQuestionIndex = 0 //starting on first question
+
     questionContainerElement.classList.remove('hide')
+    infoBox.classList.add('hide')
+    setTime();
     SetNextQuestion()
 
 }
@@ -60,15 +67,30 @@ function resetState() {
 
 function selectAnswer(e) {
     var selectedButton = e.target
+    
     var correct = selectedButton.dataset.correct //checking if correct
     setStatusClass(document.body, correct) // looping through to check if correct or incorrect 
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+
+    if(correct){
+        textCorrect.textContent = "You got it right!";
+    }
+    else{
+        textCorrect.textContent = "You got it wrong!";
+        secondsLeft = secondsLeft - 15;
+        timeEl.textContent = secondsLeft + " seconds left ";
+    }
+
+    textCorrect.classList.remove('hide');
+
+    //checks end condition no questions left
     if (shuffledQuestions.length > currentQuestionIndex + 1) { // more questions?
      nextButton.classList.remove('hide') //remooving the hidden 'next' button 
     } else {
-        startButton.innerText = 'Restart' //start from beginning 
+        startButton.textContent = 'Restart' //start from beginning
+        questionContainerElement.classList.add('hide') 
         startButton.classList.remove('hide')
     }
 }
@@ -77,9 +99,12 @@ function setStatusClass(element, correct) {
     clearStatusClass(element) // clear if already defined 
     if (correct) { // adding the correct class is correct 
         element.classList.add('correct')
+       
     } else {
         element.classList.add('wrong')  
     }
+
+    element.disabled = true;
 }
 
 function clearStatusClass(element) { 
@@ -87,9 +112,27 @@ function clearStatusClass(element) {
     element.classList.remove('wrong')
 }
 
+function setTime() {
+    timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds left ";
+
+    //checks end condition no time left
+    //local storage should be an array of objects with it called scores = [{initial: initial, score: score}]
+    if(secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      startButton.textContent = 'Restart' //start from beginning
+      questionContainerElement.classList.add('hide') 
+      startButton.classList.remove('hide')
+    }
+
+  }, 1000);
+}
+
+
 var questions = [
     {
-        question: 'Which element do you put javascript in?',
+        question: 'Inside which HTML element do you put javascript in?',
         answers: [
             {text: '<var>', correct: false},
             {text: '<script>', correct: true },
@@ -117,21 +160,21 @@ var questions = [
         ]
     },
     {
-        question: 'What does CSS stand for?',
+        question: 'Arrays in Javascript can be used to store ___.',
         answers: [
-            {text: 'Cascading Style Sheet', correct: true },
-            {text: 'Controller Style Sheet', correct: false },
-            {text: 'Cascading Screen Style', correct: false },
-            {text: 'Controller Screen Style', correct: false },
+            {text: 'Numbers and strings', correct: false },
+            {text: 'Other arrays', correct: false },
+            {text: 'Booleans', correct: false },
+            {text: 'All of the above', correct: true },
         ]
     },
     {
-        question: 'What does CSS stand for?',
+        question: 'Commonly used data types do NOT include ___.',
         answers: [
-            {text: 'Cascading Style Sheet', correct: true },
-            {text: 'Controller Style Sheet', correct: false },
-            {text: 'Cascading Screen Style', correct: false },
-            {text: 'Controller Screen Style', correct: false },
+            {text: 'Booleans', correct: false },
+            {text: 'Alerts', correct: true },
+            {text: 'Numbers', correct: false },
+            {text: 'Strings', correct: false },
         ]
     },
 ]
