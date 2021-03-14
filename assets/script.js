@@ -11,7 +11,8 @@ var textCorrect = document.querySelector("#correctWrong");
 //let variables as they change
 let shuffledQuestions, currentQuestionIndex
 var secondsLeft = 60;
-var timerInterval;
+
+
 
 // allows buttons to work 
 startButton.addEventListener('click', startGame)
@@ -21,7 +22,7 @@ nextButton.addEventListener('click', () => {
     SetNextQuestion() //incrementing to next question 
 })
 
- 
+
 function startGame() {
     console.log('Started')
     startButton.classList.add('hide')
@@ -49,7 +50,7 @@ function showQuestion(question) {
         button.innerText = answer.text
         button.classList.add('btn')
         if (answer.correct) {
-            button.dataset.correct = answer.correct 
+            button.dataset.correct = answer.correct
         }
         button.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
@@ -61,23 +62,23 @@ function resetState() {
     nextButton.classList.add('hide') // hides the 'next' button after answer is seleced 
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild
-        (answerButtonsElement.firstChild)
+            (answerButtonsElement.firstChild)
     }
 }
 
 function selectAnswer(e) {
     var selectedButton = e.target
-    
+
     var correct = selectedButton.dataset.correct //checking if correct
     setStatusClass(document.body, correct) // looping through to check if correct or incorrect 
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
 
-    if(correct){
+    if (correct) {
         textCorrect.textContent = "You got it right!";
     }
-    else{
+    else {
         textCorrect.textContent = "You got it wrong!";
         secondsLeft = secondsLeft - 15;
         timeEl.textContent = secondsLeft + " seconds left ";
@@ -87,94 +88,99 @@ function selectAnswer(e) {
 
     //checks end condition no questions left
     if (shuffledQuestions.length > currentQuestionIndex + 1) { // more questions?
-     nextButton.classList.remove('hide') //remooving the hidden 'next' button 
+        nextButton.classList.remove('hide') //remooving the hidden 'next' button 
     } else {
         startButton.textContent = 'Restart' //start from beginning
-        questionContainerElement.classList.add('hide') 
+        questionContainerElement.classList.add('hide')
         startButton.classList.remove('hide')
     }
 }
+
+document.getElementById("submitBtn").addEventListener("click", function(event){
+    event.preventDefault() //we don't want the page to refresh upon form submission!
+  })
+
 
 function setStatusClass(element, correct) {
     clearStatusClass(element) // clear if already defined 
     if (correct) { // adding the correct class is correct 
         element.classList.add('correct')
-       
+
     } else {
-        element.classList.add('wrong')  
+        element.classList.add('wrong')
     }
 
     element.disabled = true;
+
 }
 
-function clearStatusClass(element) { 
+function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
 
 function setTime() {
-    timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left ";
+    timerInterval = setInterval(function () {
+        secondsLeft--;
+        timeEl.textContent = secondsLeft + " seconds left ";
 
-    //checks end condition no time left
-    //local storage should be an array of objects with it called scores = [{initial: initial, score: score}]
-    if(secondsLeft <= 0) {
-      clearInterval(timerInterval);
-      startButton.textContent = 'Restart' //start from beginning
-      questionContainerElement.classList.add('hide') 
-      startButton.classList.remove('hide')
-    }
+        //checks end condition no time left
+        //local storage should be an array of objects with it called scores = [{initial: initial, score: score}]
+        if (secondsLeft <= 0) {
+            clearInterval(timerInterval);
+            startButton.textContent = 'Restart' //start from beginning
+            questionContainerElement.classList.add('hide')
+            startButton.classList.remove('hide')
+        }
 
-  }, 1000);
+    }, 1000);
 }
-
 
 var questions = [
     {
         question: 'Inside which HTML element do you put javascript in?',
         answers: [
-            {text: '<var>', correct: false},
-            {text: '<script>', correct: true },
-            {text: '<section>', correct: false },
-            {text: '<code>', correct: false },
+            { text: '<var>', correct: false },
+            { text: '<script>', correct: true },
+            { text: '<section>', correct: false },
+            { text: '<code>', correct: false },
         ]
     },
-    
+
     {
         question: 'What does CSS stand for?',
         answers: [
-            {text: 'Cascading Style Sheet', correct: true },
-            {text: 'Controller Style Sheet', correct: false },
-            {text: 'Cascading Screen Style', correct: false },
-            {text: 'Controller Screen Style', correct: false },
+            { text: 'Cascading Style Sheet', correct: true },
+            { text: 'Controller Style Sheet', correct: false },
+            { text: 'Cascading Screen Style', correct: false },
+            { text: 'Controller Screen Style', correct: false },
         ]
     },
     {
         question: 'What does HTML stand for?',
         answers: [
-            {text: 'Hyper Text Processor', correct: false },
-            {text: 'Hyper Text Markup Language', correct: true },
-            {text: 'Hyper Text Multiple Language', correct: false },
-            {text: 'Hyper Tool Multi Language', correct: false },
+            { text: 'Hyper Text Processor', correct: false },
+            { text: 'Hyper Text Markup Language', correct: true },
+            { text: 'Hyper Text Multiple Language', correct: false },
+            { text: 'Hyper Tool Multi Language', correct: false },
         ]
     },
     {
         question: 'Arrays in Javascript can be used to store ___.',
         answers: [
-            {text: 'Numbers and strings', correct: false },
-            {text: 'Other arrays', correct: false },
-            {text: 'Booleans', correct: false },
-            {text: 'All of the above', correct: true },
+            { text: 'Numbers and strings', correct: false },
+            { text: 'Other arrays', correct: false },
+            { text: 'Booleans', correct: false },
+            { text: 'All of the above', correct: true },
         ]
     },
     {
         question: 'Commonly used data types do NOT include ___.',
         answers: [
-            {text: 'Booleans', correct: false },
-            {text: 'Alerts', correct: true },
-            {text: 'Numbers', correct: false },
-            {text: 'Strings', correct: false },
+            { text: 'Booleans', correct: false },
+            { text: 'Alerts', correct: true },
+            { text: 'Numbers', correct: false },
+            { text: 'Strings', correct: false },
         ]
     },
 ]
