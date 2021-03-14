@@ -106,11 +106,13 @@ body {
     display: none;
 }
 
-.initialsform {
-    position: flex;
+#initialsform {
+    display: flex;
     margin-left: auto;
-    margin-right: auto;
-
+    margin-right: auto; 
 }
 
+form {
+    display: none;
+}
 /* highscores CSS */

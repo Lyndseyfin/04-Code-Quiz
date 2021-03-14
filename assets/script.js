@@ -66,6 +66,20 @@ function resetState() {
     }
 }
 
+function quizEnd() {
+    document.querySelector("form").style.display="block"
+    document.querySelector("#submitBtn").addEventListener("click", function(){
+    //timerEl.textContent
+    var saveUser = {
+        initials: document.querySelector("#initials").value,
+        score: timeEl.textContent
+    }
+    console.log(saveUser)
+    window.localStorage.setItem("highScores", JSON.stringify(saveUser))
+    JSON.parse(window.localStorage.getItem("highScores"))
+    })
+}
+
 function selectAnswer(e) {
     var selectedButton = e.target
 
@@ -90,6 +104,7 @@ function selectAnswer(e) {
     if (shuffledQuestions.length > currentQuestionIndex + 1) { // more questions?
         nextButton.classList.remove('hide') //remooving the hidden 'next' button 
     } else {
+        quizEnd()
         startButton.textContent = 'Restart' //start from beginning
         questionContainerElement.classList.add('hide')
         startButton.classList.remove('hide')
