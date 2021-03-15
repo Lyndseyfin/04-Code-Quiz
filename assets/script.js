@@ -67,16 +67,16 @@ function resetState() {
 }
 
 function quizEnd() {
-    document.querySelector("form").style.display="block"
-    document.querySelector("#submitBtn").addEventListener("click", function(){
-    var saveUser = {
-        initials: document.querySelector("#initials").value,
-        score: timeEl.textContent   
-    }
-    
-    console.log(saveUser)
-    window.localStorage.setItem("highScores", JSON.stringify(saveUser))
-    JSON.parse(window.localStorage.getItem("highScores"))
+    document.querySelector("form").style.display = "block"
+    document.querySelector("#submitBtn").addEventListener("click", function () {
+        var saveUser = {
+            initials: document.querySelector("#initials").value,
+            score: timeEl.textContent
+        }
+
+        console.log(saveUser)
+        window.localStorage.setItem("highScores", JSON.stringify(saveUser))
+        JSON.parse(window.localStorage.getItem("highScores"))
     })
 }
 
@@ -105,16 +105,16 @@ function selectAnswer(e) {
         nextButton.classList.remove('hide') //remooving the hidden 'next' button 
     } else {
         quizEnd()
-        secondsLeft = 0
+        secondsLeft = 0
         startButton.textContent = 'Restart' //start from beginning
         questionContainerElement.classList.add('hide')
         startButton.classList.remove('hide')
     }
 }
 
-document.getElementById("submitBtn").addEventListener("click", function(event){
+document.getElementById("submitBtn").addEventListener("click", function (event) {
     event.preventDefault() //we don't want the page to refresh upon form submission!
-  })
+})
 
 
 function setStatusClass(element, correct) {
@@ -137,9 +137,6 @@ function clearStatusClass(element) {
 
 function setTime() {
     timerInterval = setInterval(function () {
-        secondsLeft--;
-        timeEl.textContent = secondsLeft + " seconds left ";
-
         //checks end condition no time left
         //local storage should be an array of objects with it called scores = [{initial: initial, score: score}]
         if (secondsLeft <= 0) {
@@ -149,6 +146,9 @@ function setTime() {
             startButton.classList.remove('hide')
         }
 
+        secondsLeft--;
+        timeEl.textContent = secondsLeft + " seconds left ";
+        
     }, 1000);
 }
 
