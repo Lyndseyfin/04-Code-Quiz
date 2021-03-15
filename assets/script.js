@@ -94,7 +94,7 @@ function selectAnswer(e) {
     }
     else {
         textCorrect.textContent = "You got it wrong!";
-        secondsLeft = secondsLeft - 15;
+        secondsLeft = secondsLeft - 10;
         timeEl.textContent = secondsLeft + " seconds left ";
     }
 

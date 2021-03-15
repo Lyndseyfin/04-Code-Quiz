@@ -114,5 +114,10 @@ body {
 
 form {
     display: none;
+    padding: 80px 60px;
+    outline: none;
+    text-align: center;
+    justify-content: center;
 }
-/* highscores CSS */
+
+
