@@ -2,10 +2,10 @@
 Forth assignment
 
 ## HTML + Javascript + CSS
-- I created a randomized quiz with HTML and Javascript, mainly styled with CSS to create a randomized coding quiz with 5 questions 
+- I created a 5 question randomized coding quiz HTML and Javascript, mainly styled with CSS
 - User will be prompted by computer to answer 5 questions 
-- If user does not answer correctly, text will display in red and a statement of 'You got it wrong!'
-- If user does answer correctly, text will display in teal and return a statement of 'You got it right!'
+- If user does not answer correctly, computer will return text 'You got it wrong!'and button will turn red
+- If user does answer correctly, computer will return 'You got it right!' and button will turn teal
 - A timer with 60 seconds will display on top right and 10 seconds will be deducted from each wrong answer
 - User will input intials at end of game and score + initials will be saved
 
