@@ -8,5 +8,5 @@
 
 
 ##### Screenshot
-![screenshot]
+![screenshot](file:///C:/Users/lynds/code/homework/04-Code-Quiz/index.html)
 

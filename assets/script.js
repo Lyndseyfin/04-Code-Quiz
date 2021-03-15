@@ -69,10 +69,11 @@ function resetState() {
 function quizEnd() {
     document.querySelector("form").style.display="block"
     document.querySelector("#submitBtn").addEventListener("click", function(){
-    //timerEl.textContent
+    secondsLeft = secondsLeft - 0;
     var saveUser = {
         initials: document.querySelector("#initials").value,
-        score: timeEl.textContent
+        score: timeEl.textContent,
+        
     }
     console.log(saveUser)
     window.localStorage.setItem("highScores", JSON.stringify(saveUser))
@@ -105,6 +106,7 @@ function selectAnswer(e) {
         nextButton.classList.remove('hide') //remooving the hidden 'next' button 
     } else {
         quizEnd()
+        timeEl.textContent = 0;
         startButton.textContent = 'Restart' //start from beginning
         questionContainerElement.classList.add('hide')
         startButton.classList.remove('hide')
