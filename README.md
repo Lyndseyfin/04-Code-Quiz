@@ -2,7 +2,7 @@
 Forth assignment
 
 ## HTML + JS + CSS
-- I created a randomized quiz with HTML and Javascript styled with CSS to create a randomized coding quiz with 5 questions 
+- I created a randomized quiz with HTML and Javascript, mainly styled with CSS to create a randomized coding quiz with 5 questions 
 - User will be prompted by computer to answer 5 questions 
 - If user does not answer correctly, text will display in red and a statement of 'You are wrong!'
 - If user does answer correctly, text will display in teal and return a statement of 'You are correact!'
@@ -11,7 +11,8 @@ Forth assignment
 
 ### Link to deployed application
 
-#### Screenshot
-![screenshot](assets/imagehw.png)
+<a href="https://lyndseyfin.github.io/04-Code-Quiz/"> Code Quiz</a>
 
+#### Screenshot
+![screenshot](assets/images/cq.png)
 
