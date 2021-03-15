@@ -105,7 +105,7 @@ function selectAnswer(e) {
         nextButton.classList.remove('hide') //remooving the hidden 'next' button 
     } else {
         quizEnd()
-        timeEl.textContent = 0;
+        secondsLeft = 0
         startButton.textContent = 'Restart' //start from beginning
         questionContainerElement.classList.add('hide')
         startButton.classList.remove('hide')
