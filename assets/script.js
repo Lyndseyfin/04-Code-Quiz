@@ -144,11 +144,12 @@ function setTime() {
             startButton.textContent = 'Restart' //start from beginning
             questionContainerElement.classList.add('hide')
             startButton.classList.remove('hide')
+            return
         }
 
         secondsLeft--;
         timeEl.textContent = secondsLeft + " seconds left ";
-        
+    
     }, 1000);
 }
 
