@@ -69,12 +69,11 @@ function resetState() {
 function quizEnd() {
     document.querySelector("form").style.display="block"
     document.querySelector("#submitBtn").addEventListener("click", function(){
-    secondsLeft = secondsLeft - 0;
     var saveUser = {
         initials: document.querySelector("#initials").value,
-        score: timeEl.textContent,
-        
+        score: timeEl.textContent   
     }
+    
     console.log(saveUser)
     window.localStorage.setItem("highScores", JSON.stringify(saveUser))
     JSON.parse(window.localStorage.getItem("highScores"))
