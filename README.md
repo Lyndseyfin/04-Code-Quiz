@@ -2,7 +2,7 @@
 Forth assignment
 
 ## HTML + Javascript + CSS
-- I created a 5 question randomized coding quiz HTML and Javascript, mainly styled with CSS
+- I created a 5 question randomized coding quiz using HTML and Javascript, mainly styled with CSS
 - User will be prompted by computer to answer 5 questions 
 - If user does not answer correctly, computer will return text 'You got it wrong!'and button will turn red
 - If user does answer correctly, computer will return 'You got it right!' and button will turn teal
