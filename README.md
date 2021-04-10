@@ -14,8 +14,8 @@ Forth assignment
 <a href="https://lyndseyfin.github.io/04-Code-Quiz/"> Code Quiz</a>
 
 #### Screenshot
-![screenshot](images/codequiz.png)
-![screenshot](images/codequiz2.png)
+![screenshot](assets/images/codequiz.png)
+![screenshot](assets/images/codequiz2.png)
 
 ##### License
 
